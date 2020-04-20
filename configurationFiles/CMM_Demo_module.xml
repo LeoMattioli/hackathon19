@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?><module>
+   <id>CMM_Demo</id>
+   <auto-deploy>true</auto-deploy>
+   <configurations>
+      
+      <!-- Document Library config section -->
+      <config condition="DocumentLibrary" evaluator="string-compare" replace="false">
+         <types>
+            <type name="cm:folder">
+               <subtype label="Rules Folder " name="demo:TFldRules"/>
+            </type>
+            <type name="cm:content">
+               <subtype label="Origine Merce Demo" name="demo:TOrigineMerci"/>
+               <subtype label="Fattura Fornitore Demo" name="demo:TFatturaFornitore"/>
+            </type>
+         </types>
+      </config>
+
+      <!-- Form configuration section - type -->
+      <config condition="demo:TFldRules" evaluator="node-type">
+         <forms>
+            <form>
+               <field-visibility>
+                  <show id="cm:name"/>
+                  <show id="demo:config"/>
+               </field-visibility>
+               <appearance>
+                  <set appearance="whitespace" id="demo:TFldRules_cmm_set0"/>
+                  <field id="cm:name" set="demo:TFldRules_cmm_set0">
+                     <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                     </control>
+                  </field>
+                  <field id="demo:config" set="demo:TFldRules_cmm_set0">
+                     <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                     </control>
+                  </field>
+               </appearance>
+            </form>
+            
+            <!-- Document Library pop-up Edit Metadata form -->
+            <form id="doclib-simple-metadata">
+               <edit-form template="../documentlibrary/forms/doclib-simple-metadata.ftl"/>
+               <field-visibility>
+                  <show id="cm:name"/>
+                  <show id="demo:config"/>
+               </field-visibility>
+               <appearance>
+                  <set appearance="whitespace" id="demo:TFldRules_cmm_set0"/>
+                  <field id="cm:name" set="demo:TFldRules_cmm_set0">
+                     <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                     </control>
+                  </field>
+                  <field id="demo:config" set="demo:TFldRules_cmm_set0">
+                     <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                     </control>
+                  </field>
+               </appearance>
+            </form>
+            
+            <!-- Document Library Inline Edit form -->
+            <form id="doclib-inline-edit">
+               <field-visibility>
+                  <show id="cm:name"/>
+                  <show force="true" id="cm:content"/>
+                  <show force="true" id="cm:title"/>
+                  <show force="true" id="cm:description"/>
+               </field-visibility>
+               <appearance>
+                  <field id="cm:name">
+                    <control>
+                       <control-param name="maxLength">255</control-param>
+                    </control>
+                  </field>
+                  <field id="cm:title">
+                     <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                  </field>
+                  <field id="cm:content" label-id="">
+                     <control>
+                        <control-param name="editorAppearance">explorer</control-param>
+                        <control-param name="forceEditor">true</control-param>
+                     </control>
+                  </field>
+               </appearance>
+            </form>
+         </forms>
+      </config>
+      <config condition="demo:TOrigineMerci" evaluator="node-type">
+         <forms>
+            <form>
+               <field-visibility>
+                  <show id="cm:name"/>
+                  <show force="true" id="cm:title"/>
+                  <show force="true" id="cm:description"/>
+                  <show for-mode="view" id="cm:creator"/>
+                  <show for-mode="view" id="cm:created"/>
+                  <show for-mode="view" id="cm:modifier"/>
+                  <show for-mode="view" id="cm:modified"/>
+                  <show for-mode="view" id="size"/>
+                  <show id="mimetype"/>
+                  <show force="true" id="cm:author"/>
+                  <show for-mode="edit" force="true" id="cm:taggable"/>
+                  <show id="cm:categories"/>
+                  <show id="demo:dataScadenzaCertificato"/>
+                  <show id="demo:dataCertificato"/>
+                  <show id="demo:codiceMaterialeFornitore"/>
+                  <show id="demo:nomenclaturaDoganale"/>
+               </field-visibility>
+               <appearance>
+                  <set appearance="whitespace" id="demo:TOrigineMerci_cmm_set0"/>
+                  <field id="cm:title" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="cm:creator" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="cm:modifier" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="cm:created" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="demo:nomenclaturaDoganale" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="cm:categories" set="demo:TOrigineMerci_cmm_set0">
+                     <control>
+                        <control-param name="compactMode">true</control-param>
+                     </control>
+                  </field>
+                  <field id="cm:description" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="cm:taggable" set="demo:TOrigineMerci_cmm_set0">
+                     <control>
+                        <control-param name="createNewItemUri">/api/tag/workspace/SpacesStore</control-param>
+                        <control-param name="createNewItemIcon">tag</control-param>
+                        <control-param name="params">aspect=cm:taggable</control-param>
+                        <control-param name="compactMode">true</control-param>
+                     </control>
+                  </field>
+                  <field id="size" set="demo:TOrigineMerci_cmm_set0">
+                     <control template="/org/alfresco/components/form/controls/size.ftl">
+                     </control>
+                  </field>
+                  <field id="cm:name" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="cm:author" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="demo:dataScadenzaCertificato" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="demo:dataCertificato" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="mimetype" set="demo:TOrigineMerci_cmm_set0">
+                     <control template="/org/alfresco/components/form/controls/mimetype.ftl">
+                     </control>
+                  </field>
+                  <field id="cm:modified" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="demo:codiceMaterialeFornitore" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+               </appearance>
+            </form>
+            
+            <!-- Document Library pop-up Edit Metadata form -->
+            <form id="doclib-simple-metadata">
+               <edit-form template="../documentlibrary/forms/doclib-simple-metadata.ftl"/>
+               <field-visibility>
+                  <show id="cm:name"/>
+                  <show force="true" id="cm:title"/>
+                  <show force="true" id="cm:description"/>
+                  <show for-mode="view" id="cm:creator"/>
+                  <show for-mode="view" id="cm:created"/>
+                  <show for-mode="view" id="cm:modifier"/>
+                  <show for-mode="view" id="cm:modified"/>
+                  <show for-mode="view" id="size"/>
+                  <show id="mimetype"/>
+                  <show force="true" id="cm:author"/>
+                  <show for-mode="edit" force="true" id="cm:taggable"/>
+                  <show id="cm:categories"/>
+                  <show id="demo:dataScadenzaCertificato"/>
+                  <show id="demo:dataCertificato"/>
+                  <show id="demo:codiceMaterialeFornitore"/>
+                  <show id="demo:nomenclaturaDoganale"/>
+               </field-visibility>
+               <appearance>
+                  <set appearance="whitespace" id="demo:TOrigineMerci_cmm_set0"/>
+                  <field id="cm:title" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="cm:creator" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="cm:modifier" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="cm:created" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="demo:nomenclaturaDoganale" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="cm:categories" set="demo:TOrigineMerci_cmm_set0">
+                     <control>
+                        <control-param name="compactMode">true</control-param>
+                     </control>
+                  </field>
+                  <field id="cm:description" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="cm:taggable" set="demo:TOrigineMerci_cmm_set0">
+                     <control>
+                        <control-param name="createNewItemUri">/api/tag/workspace/SpacesStore</control-param>
+                        <control-param name="createNewItemIcon">tag</control-param>
+                        <control-param name="params">aspect=cm:taggable</control-param>
+                        <control-param name="compactMode">true</control-param>
+                     </control>
+                  </field>
+                  <field id="size" set="demo:TOrigineMerci_cmm_set0">
+                     <control template="/org/alfresco/components/form/controls/size.ftl">
+                     </control>
+                  </field>
+                  <field id="cm:name" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="cm:author" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="demo:dataScadenzaCertificato" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="demo:dataCertificato" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="mimetype" set="demo:TOrigineMerci_cmm_set0">
+                     <control template="/org/alfresco/components/form/controls/mimetype.ftl">
+                     </control>
+                  </field>
+                  <field id="cm:modified" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+                  <field id="demo:codiceMaterialeFornitore" set="demo:TOrigineMerci_cmm_set0">
+                  </field>
+               </appearance>
+            </form>
+            
+            <!-- Document Library Inline Edit form -->
+            <form id="doclib-inline-edit">
+               <field-visibility>
+                  <show id="cm:name"/>
+                  <show force="true" id="cm:content"/>
+                  <show force="true" id="cm:title"/>
+                  <show force="true" id="cm:description"/>
+               </field-visibility>
+               <appearance>
+                  <field id="cm:name">
+                    <control>
+                       <control-param name="maxLength">255</control-param>
+                    </control>
+                  </field>
+                  <field id="cm:title">
+                     <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                  </field>
+                  <field id="cm:content" label-id="">
+                     <control>
+                        <control-param name="editorAppearance">explorer</control-param>
+                        <control-param name="forceEditor">true</control-param>
+                     </control>
+                  </field>
+               </appearance>
+            </form>
+         </forms>
+      </config>
+      <config condition="demo:TFatturaFornitore" evaluator="node-type">
+         <forms>
+            <form>
+               <field-visibility>
+                  <show id="cm:name"/>
+                  <show force="true" id="cm:title"/>
+                  <show force="true" id="cm:description"/>
+                  <show for-mode="view" id="cm:creator"/>
+                  <show for-mode="view" id="cm:created"/>
+                  <show for-mode="view" id="cm:modifier"/>
+                  <show for-mode="view" id="cm:modified"/>
+                  <show for-mode="view" id="size"/>
+                  <show id="mimetype"/>
+                  <show force="true" id="cm:author"/>
+                  <show for-mode="edit" force="true" id="cm:taggable"/>
+                  <show id="cm:categories"/>
+                  <show id="demo:ragsocFornitore"/>
+                  <show id="demo:codFornitore"/>
+                  <show id="demo:numeroFattura"/>
+                  <show id="demo:dataFattura"/>
+               </field-visibility>
+               <appearance>
+                  <set appearance="whitespace" id="demo:TFatturaFornitore_cmm_set0"/>
+                  <field id="cm:title" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:creator" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:modifier" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:created" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:categories" set="demo:TFatturaFornitore_cmm_set0">
+                     <control>
+                        <control-param name="compactMode">true</control-param>
+                     </control>
+                  </field>
+                  <field id="demo:ragsocFornitore" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:description" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:taggable" set="demo:TFatturaFornitore_cmm_set0">
+                     <control>
+                        <control-param name="createNewItemUri">/api/tag/workspace/SpacesStore</control-param>
+                        <control-param name="createNewItemIcon">tag</control-param>
+                        <control-param name="params">aspect=cm:taggable</control-param>
+                        <control-param name="compactMode">true</control-param>
+                     </control>
+                  </field>
+                  <field id="demo:numeroFattura" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="demo:dataFattura" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="size" set="demo:TFatturaFornitore_cmm_set0">
+                     <control template="/org/alfresco/components/form/controls/size.ftl">
+                     </control>
+                  </field>
+                  <field id="cm:name" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:author" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="mimetype" set="demo:TFatturaFornitore_cmm_set0">
+                     <control template="/org/alfresco/components/form/controls/mimetype.ftl">
+                     </control>
+                  </field>
+                  <field id="demo:codFornitore" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:modified" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+               </appearance>
+            </form>
+            
+            <!-- Document Library pop-up Edit Metadata form -->
+            <form id="doclib-simple-metadata">
+               <edit-form template="../documentlibrary/forms/doclib-simple-metadata.ftl"/>
+               <field-visibility>
+                  <show id="cm:name"/>
+                  <show force="true" id="cm:title"/>
+                  <show force="true" id="cm:description"/>
+                  <show for-mode="view" id="cm:creator"/>
+                  <show for-mode="view" id="cm:created"/>
+                  <show for-mode="view" id="cm:modifier"/>
+                  <show for-mode="view" id="cm:modified"/>
+                  <show for-mode="view" id="size"/>
+                  <show id="mimetype"/>
+                  <show force="true" id="cm:author"/>
+                  <show for-mode="edit" force="true" id="cm:taggable"/>
+                  <show id="cm:categories"/>
+                  <show id="demo:ragsocFornitore"/>
+                  <show id="demo:codFornitore"/>
+                  <show id="demo:numeroFattura"/>
+                  <show id="demo:dataFattura"/>
+               </field-visibility>
+               <appearance>
+                  <set appearance="whitespace" id="demo:TFatturaFornitore_cmm_set0"/>
+                  <field id="cm:title" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:creator" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:modifier" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:created" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:categories" set="demo:TFatturaFornitore_cmm_set0">
+                     <control>
+                        <control-param name="compactMode">true</control-param>
+                     </control>
+                  </field>
+                  <field id="demo:ragsocFornitore" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:description" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:taggable" set="demo:TFatturaFornitore_cmm_set0">
+                     <control>
+                        <control-param name="createNewItemUri">/api/tag/workspace/SpacesStore</control-param>
+                        <control-param name="createNewItemIcon">tag</control-param>
+                        <control-param name="params">aspect=cm:taggable</control-param>
+                        <control-param name="compactMode">true</control-param>
+                     </control>
+                  </field>
+                  <field id="demo:numeroFattura" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="demo:dataFattura" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="size" set="demo:TFatturaFornitore_cmm_set0">
+                     <control template="/org/alfresco/components/form/controls/size.ftl">
+                     </control>
+                  </field>
+                  <field id="cm:name" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:author" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="mimetype" set="demo:TFatturaFornitore_cmm_set0">
+                     <control template="/org/alfresco/components/form/controls/mimetype.ftl">
+                     </control>
+                  </field>
+                  <field id="demo:codFornitore" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+                  <field id="cm:modified" set="demo:TFatturaFornitore_cmm_set0">
+                  </field>
+               </appearance>
+            </form>
+            
+            <!-- Document Library Inline Edit form -->
+            <form id="doclib-inline-edit">
+               <field-visibility>
+                  <show id="cm:name"/>
+                  <show force="true" id="cm:content"/>
+                  <show force="true" id="cm:title"/>
+                  <show force="true" id="cm:description"/>
+               </field-visibility>
+               <appearance>
+                  <field id="cm:name">
+                    <control>
+                       <control-param name="maxLength">255</control-param>
+                    </control>
+                  </field>
+                  <field id="cm:title">
+                     <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                  </field>
+                  <field id="cm:content" label-id="">
+                     <control>
+                        <control-param name="editorAppearance">explorer</control-param>
+                        <control-param name="forceEditor">true</control-param>
+                     </control>
+                  </field>
+               </appearance>
+            </form>
+         </forms>
+      </config>
+      
+      <!-- Form configuration section - aspect -->
+      
+      <!-- Entity form designer configuration -->
+      <config condition="FormDefinition" evaluator="string-compare">
+         <form-definition id="TFatturaFornitore">[{"elementconfig":{"label":"","appearance":"title"},"pseudonym":"cmm/editor/layout/1cols","label":"cmm.form-editor.palette.one-column","column":[{"pseudonym":"cmm/editor/property/text","id":"cm:name","elementconfig":{"infoname":"cm:name","infolabel":"Nome","infotype":"d:text"},"label":"Nome [cm:name]","type":["property"]},{"pseudonym":"cmm/editor/property/text","id":"cm:title","elementconfig":{"infoname":"cm:title","infolabel":"Titolo","infotype":"d:text","force":true},"label":"Titolo [cm:title]","type":["property"]},{"pseudonym":"cmm/editor/property/text","id":"cm:description","elementconfig":{"infoname":"cm:description","infolabel":"Descrizione","infotype":"d:text","force":true},"label":"Descrizione [cm:description]","type":["property"]},{"pseudonym":"cmm/editor/property/text","id":"cm:creator","elementconfig":{"infoname":"cm:creator","infolabel":"Creatore","infotype":"d:text","for-mode":"view"},"label":"Creatore [cm:creator]","type":["property"]},{"pseudonym":"cmm/editor/property/datetime","id":"cm:created","elementconfig":{"infoname":"cm:created","infolabel":"Data di creazione","infotype":"d:datetime","for-mode":"view"},"label":"Data di creazione [cm:created]","type":["property"]},{"pseudonym":"cmm/editor/property/text","id":"cm:modifier","elementconfig":{"infoname":"cm:modifier","infolabel":"Modificatore","infotype":"d:text","for-mode":"view"},"label":"Modificatore [cm:modifier]","type":["property"]},{"pseudonym":"cmm/editor/property/datetime","id":"cm:modified","elementconfig":{"infoname":"cm:modified","infolabel":"Data di modifica","infotype":"d:datetime","for-mode":"view"},"label":"Data di modifica [cm:modified]","type":["property"]},{"pseudonym":"cmm/editor/property/size","id":"size","elementconfig":{"infoname":"size","infolabel":"Dimensioni","infotype":"size","for-mode":"view","controltype":"size"},"label":"Dimensioni [size]","type":["property"]},{"pseudonym":"cmm/editor/property/mimetype","id":"mimetype","elementconfig":{"infoname":"mimetype","infolabel":"Tipo MIME","infotype":"mimetype","controltype":"mimetype"},"label":"Tipo MIME [mimetype]","type":["property"]},{"pseudonym":"cmm/editor/property/text","id":"cm:author","elementconfig":{"infoname":"cm:author","infolabel":"Autore","infotype":"d:text","force":true},"label":"Autore [cm:author]","type":["property"]},{"pseudonym":"cmm/editor/property/taggable","id":"cm:taggable","elementconfig":{"infoname":"cm:taggable","infolabel":"Taggabile","infotype":"taggable","for-mode":"edit","force":true,"controltype":"taggable"},"label":"Taggabile [cm:taggable]","type":["property"]},{"pseudonym":"cmm/editor/property/categories","id":"cm:categories","elementconfig":{"infoname":"cm:categories","infolabel":"Categorie","infotype":"categories","controltype":"categories"},"label":"Categorie [cm:categories]","type":["property"]},{"pseudonym":"cmm/editor/property/text","id":"demo:ragsocFornitore","elementconfig":{"infoname":"ragsocFornitore","infolabel":"Ragione Sociale","infotype":"d:text"},"label":"Ragione Sociale [ragsocFornitore]","type":["property"]},{"pseudonym":"cmm/editor/property/text","id":"demo:codFornitore","elementconfig":{"infoname":"codFornitore","infolabel":"Codice","infotype":"d:text"},"label":"Codice [codFornitore]","type":["property"]},{"pseudonym":"cmm/editor/property/text","id":"demo:numeroFattura","elementconfig":{"infoname":"numeroFattura","infolabel":"Numero Fattura","infotype":"d:text"},"label":"Numero Fattura [numeroFattura]","type":["property"]},{"pseudonym":"cmm/editor/property/date","id":"demo:dataFattura","elementconfig":{"infoname":"dataFattura","infolabel":"Data Fattura","infotype":"d:date"},"label":"Data Fattura [dataFattura]","type":["property"]}],"type":"{type}"}]</form-definition>
+         <form-definition id="TOrigineMerci">[{"elementconfig":{"label":"","appearance":"title"},"pseudonym":"cmm/editor/layout/1cols","label":"cmm.form-editor.palette.one-column","column":[{"pseudonym":"cmm/editor/property/text","id":"cm:name","elementconfig":{"infoname":"cm:name","infolabel":"Nome","infotype":"d:text"},"label":"Nome [cm:name]","type":["property"]},{"pseudonym":"cmm/editor/property/text","id":"cm:title","elementconfig":{"infoname":"cm:title","infolabel":"Titolo","infotype":"d:text","force":true},"label":"Titolo [cm:title]","type":["property"]},{"pseudonym":"cmm/editor/property/text","id":"cm:description","elementconfig":{"infoname":"cm:description","infolabel":"Descrizione","infotype":"d:text","force":true},"label":"Descrizione [cm:description]","type":["property"]},{"pseudonym":"cmm/editor/property/text","id":"cm:creator","elementconfig":{"infoname":"cm:creator","infolabel":"Creatore","infotype":"d:text","for-mode":"view"},"label":"Creatore [cm:creator]","type":["property"]},{"pseudonym":"cmm/editor/property/datetime","id":"cm:created","elementconfig":{"infoname":"cm:created","infolabel":"Data di creazione","infotype":"d:datetime","for-mode":"view"},"label":"Data di creazione [cm:created]","type":["property"]},{"pseudonym":"cmm/editor/property/text","id":"cm:modifier","elementconfig":{"infoname":"cm:modifier","infolabel":"Modificatore","infotype":"d:text","for-mode":"view"},"label":"Modificatore [cm:modifier]","type":["property"]},{"pseudonym":"cmm/editor/property/datetime","id":"cm:modified","elementconfig":{"infoname":"cm:modified","infolabel":"Data di modifica","infotype":"d:datetime","for-mode":"view"},"label":"Data di modifica [cm:modified]","type":["property"]},{"pseudonym":"cmm/editor/property/size","id":"size","elementconfig":{"infoname":"size","infolabel":"Dimensioni","infotype":"size","for-mode":"view","controltype":"size"},"label":"Dimensioni [size]","type":["property"]},{"pseudonym":"cmm/editor/property/mimetype","id":"mimetype","elementconfig":{"infoname":"mimetype","infolabel":"Tipo MIME","infotype":"mimetype","controltype":"mimetype"},"label":"Tipo MIME [mimetype]","type":["property"]},{"pseudonym":"cmm/editor/property/text","id":"cm:author","elementconfig":{"infoname":"cm:author","infolabel":"Autore","infotype":"d:text","force":true},"label":"Autore [cm:author]","type":["property"]},{"pseudonym":"cmm/editor/property/taggable","id":"cm:taggable","elementconfig":{"infoname":"cm:taggable","infolabel":"Taggabile","infotype":"taggable","for-mode":"edit","force":true,"controltype":"taggable"},"label":"Taggabile [cm:taggable]","type":["property"]},{"pseudonym":"cmm/editor/property/categories","id":"cm:categories","elementconfig":{"infoname":"cm:categories","infolabel":"Categorie","infotype":"categories","controltype":"categories"},"label":"Categorie [cm:categories]","type":["property"]},{"pseudonym":"cmm/editor/property/date","id":"demo:dataScadenzaCertificato","elementconfig":{"infoname":"dataScadenzaCertificato","infolabel":"Data Scadenza","infotype":"d:date"},"label":"Data Scadenza [dataScadenzaCertificato]","type":["property"]},{"pseudonym":"cmm/editor/property/date","id":"demo:dataCertificato","elementconfig":{"infoname":"dataCertificato","infolabel":"Data Certificato","infotype":"d:date"},"label":"Data Certificato [dataCertificato]","type":["property"]},{"pseudonym":"cmm/editor/property/text","id":"demo:codiceMaterialeFornitore","elementconfig":{"infoname":"codiceMaterialeFornitore","infolabel":"Codice Materiale","infotype":"d:text"},"label":"Codice Materiale [codiceMaterialeFornitore]","type":["property"]},{"pseudonym":"cmm/editor/property/text","id":"demo:nomenclaturaDoganale","elementconfig":{"infoname":"nomenclaturaDoganale","infolabel":"Nomenclatura","infotype":"d:text"},"label":"Nomenclatura [nomenclaturaDoganale]","type":["property"]}],"type":"{type}"}]</form-definition>
+         <form-definition id="TFldRules">[{"elementconfig":{"label":"","appearance":"bordered-panel"},"pseudonym":"cmm/editor/layout/1cols","label":"cmm.form-editor.palette.one-column","type":["layout"],"column":[{"pseudonym":"cmm/editor/property/text","id":"cm:name","elementconfig":{"infoname":"cm:name","infolabel":"Nome","infotype":"d:text","controltype":"textfield","for-mode":"any","style":"","styleclass":"","read-only":false,"force":false,"hidden":false},"label":"Nome [cm:name]","type":["property"],"alfValidForm":true},{"pseudonym":"cmm/editor/property/text","id":"demo:config","elementconfig":{"infoname":"config","infolabel":"Configurazione","infotype":"d:text","controltype":"textarea","for-mode":"any","style":"","styleclass":"","read-only":false,"force":false,"hidden":false},"label":"Configurazione [config]","type":["property"],"alfValidForm":true}]}]</form-definition>
+      </config>
+
+   </configurations>
+</module>

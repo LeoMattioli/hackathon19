@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://www.alfresco.org/model/dictionary/1.0" name="demo:Demo">
+    <author>Administrator</author>
+    <imports>
+        <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
+        <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d"/>
+    </imports>
+    <namespaces>
+        <namespace uri="http://www.castgroup.it/model/demo/1.0" prefix="demo"/>
+    </namespaces>
+    <data-types/>
+    <constraints/>
+    <types>
+        <type name="demo:TFldRules">
+            <title>Rules Folder </title>
+            <parent>cm:folder</parent>
+            <properties>
+                <property name="demo:config">
+                    <title>Configurazione</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <tokenised>TRUE</tokenised>
+                        <facetable>false</facetable>
+                    </index>
+                </property>
+            </properties>
+            <associations/>
+            <overrides/>
+            <mandatory-aspects/>
+        </type>
+        <type name="demo:TOrigineMerci">
+            <title>Origine Merce Demo</title>
+            <parent>cm:content</parent>
+            <properties>
+                <property name="demo:dataScadenzaCertificato">
+                    <title>Data Scadenza</title>
+                    <type>d:date</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true">
+                        <tokenised>TRUE</tokenised>
+                        <facetable>true</facetable>
+                    </index>
+                </property>
+                <property name="demo:quantitaMateriale">
+                    <title>qtaMateriale</title>
+                    <type>d:int</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <tokenised>TRUE</tokenised>
+                    </index>
+                </property>
+                <property name="demo:descrizioneMateriale">
+                    <title>descMateriale</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <tokenised>TRUE</tokenised>
+                        <facetable>false</facetable>
+                    </index>
+                </property>
+                <property name="demo:dataCertificato">
+                    <title>Data Certificato</title>
+                    <type>d:date</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <tokenised>TRUE</tokenised>
+                    </index>
+                </property>
+                <property name="demo:codiceMaterialeFornitore">
+                    <title>Codice Materiale</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true">
+                        <tokenised>FALSE</tokenised>
+                        <facetable>false</facetable>
+                    </index>
+                </property>
+                <property name="demo:nomenclaturaDoganale">
+                    <title>Nomenclatura</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <tokenised>TRUE</tokenised>
+                        <facetable>false</facetable>
+                    </index>
+                </property>
+            </properties>
+            <associations/>
+            <overrides/>
+            <mandatory-aspects/>
+        </type>
+        <type name="demo:TFatturaFornitore">
+            <title>Fattura Fornitore Demo</title>
+            <parent>cm:content</parent>
+            <properties>
+                <property name="demo:ragsocFornitore">
+                    <title>Ragione Sociale</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <tokenised>TRUE</tokenised>
+                        <facetable>false</facetable>
+                    </index>
+                </property>
+                <property name="demo:codFornitore">
+                    <title>Codice</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true">
+                        <tokenised>FALSE</tokenised>
+                        <facetable>false</facetable>
+                    </index>
+                </property>
+                <property name="demo:numeroFattura">
+                    <title>Numero Fattura</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true">
+                        <tokenised>FALSE</tokenised>
+                        <facetable>false</facetable>
+                    </index>
+                </property>
+                <property name="demo:dataFattura">
+                    <title>Data Fattura</title>
+                    <type>d:date</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true">
+                        <tokenised>TRUE</tokenised>
+                        <facetable>true</facetable>
+                    </index>
+                </property>
+            </properties>
+            <associations/>
+            <overrides/>
+            <mandatory-aspects/>
+        </type>
+    </types>
+    <aspects/>
+</model>
